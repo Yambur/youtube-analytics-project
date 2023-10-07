@@ -1,7 +1,6 @@
 import os
 import json
 from googleapiclient.discovery import build
-import isodate
 
 class Channel:
     def __init__(self, channel_id: str):

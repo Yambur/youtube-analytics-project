@@ -19,7 +19,7 @@ class Channel:
         """Выводит в консоль информацию о канале в json-подобном удобном формате с отступами"""
         api_key: str = os.getenv('YT_API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
-        channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
+        channel = youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
         print(json.dumps(channel, indent=2, ensure_ascii=False))
 
     @classmethod
@@ -31,7 +31,7 @@ class Channel:
     def to_json(self, filename):
         """Сохраняет значения атрибутов экземпляра Channel в JSON-файл."""
         channel_data = {
-            "channel_id": self.channel_id,
+            "channel_id": self.__channel_id,
             "title": self.title,
             "description": self.description,
             "url": self.url,

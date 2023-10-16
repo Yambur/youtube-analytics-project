@@ -42,3 +42,47 @@ class Channel:
         with open(filename, 'w', encoding='utf-8') as json_file:
             json.dump(channel_data, json_file, indent=2, ensure_ascii=False)
 
+    def __str__(self):
+        return f"{self.title}({self.url})"
+
+    def __add__(self, other) -> int:
+        if isinstance(other, Channel):
+            return int(self.subscribers) + int(other.subscribers)
+        else:
+            raise False
+
+    def __sub__(self, other) -> int:
+        if isinstance(other, Channel):
+            return int(self.subscribers) - int(other.subscribers)
+        else:
+            raise False
+
+    def __lt__(self, other):
+        if isinstance(other, Channel):
+            return self.subscribers < other.subscribers
+        else:
+            raise False
+
+    def __le__(self, other):
+        if isinstance(other, Channel):
+            return self.subscribers <= other.subscribers
+        else:
+            raise False
+
+    def __gt__(self, other):
+        if isinstance(other, Channel):
+            return self.subscribers > other.subscribers
+        else:
+            raise False
+
+    def __ge__(self, other):
+        if isinstance(other, Channel):
+            return self.subscribers >= other.subscribers
+        else:
+            raise False
+
+    def __eq__(self, other):
+        if isinstance(other, Channel):
+            return self.subscribers == other.subscribers
+        else:
+            return False
